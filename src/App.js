@@ -12,7 +12,7 @@ function App() {
   /** writing a function to send data */
 
   const addFriend = () => {
-    Axios.post("http://localhost:3001/addfriend", {
+    Axios.post("https://app-myfriends-backend.herokuapp.com/addfriend", {
       name: name,
       age: age,
     }).then((response) => {
@@ -28,7 +28,7 @@ function App() {
 
   const updateFriend = (id) => {
     const newAge = prompt("Enter new age: ");
-    Axios.put("http://localhost:3001/update", { newAge: newAge, id: id }).then(
+    Axios.put("https://app-myfriends-backend.herokuapp.com/update", { newAge: newAge, id: id }).then(
       () => {
       setListOfFriends(
         listOfFriends.map((val)=>{
@@ -46,7 +46,7 @@ function App() {
   /** writing a function to delete the user or friend */
 
   const deleteFriend = (id) => {
-    Axios.delete(`http://localhost:3001/delete/${id}`).then(() => {
+    Axios.delete(`https://app-myfriends-backend.herokuapp.com/delete/${id}`).then(() => {
       setListOfFriends(listOfFriends.filter((val)=>{
         return val._id != id;
       }))
@@ -61,7 +61,7 @@ function App() {
   /** using useEffect --- read data */
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/read")
+    Axios.get("https://app-myfriends-backend.herokuapp.com/read")
       .then((response) => {
         setListOfFriends(response.data);
       })
